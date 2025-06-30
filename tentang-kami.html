@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tentang Kami & Ikuti Kami - Costom_ID</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Tentang Kami Section */
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 6rem 1.5rem;
+      background: #fff;
+      max-width: 1024px;
+      margin: 0 auto;
+      gap: 2rem;
+    }
+    .about-left {
+      flex: 1 1 260px;
+      min-width: 260px;
+      margin-bottom: 1.5rem;
+    }
+    .about-title {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .about-subtitle {
+      font-size: 1.25rem;
+      color: #4b5563;
+    }
+    .about-right {
+      flex: 1 1 300px;
+      min-width: 300px;
+      max-width: 600px;
+    }
+    .about-desc {
+      font-size: 1rem;
+      color: #111;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+    .about-btn {
+      display: inline-block;
+      background: #000;
+      color: #fff;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+      text-decoration: none;
+    }
+    .about-btn:hover {
+      background: #ff8933;
+      color: #111;
+    }
+
+    /* Ikuti Kami Section */
+    .ikuti-kami-section {
+      background: #ff8933;
+      padding: 3.5rem 0 3.5rem 0;
+    }
+    .ikuti-kami-title {
+      font-size: 2.25rem;
+      font-weight: 400;
+      color: #111;
+      margin-bottom: 2rem;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+    /* Galeri dengan 4 gambar per baris */
+    .gallery-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding: 0 1.5rem;
+      margin-bottom: 2rem;
+      justify-items: center;
+      align-items: center;
+    }
+    .gallery-img {
+      width: 270px;
+      height: 270px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+      background: #fff;
+      display: block;
+      user-select: none;
+      transition: transform 0.2s;
+    }
+    .gallery-img:hover {
+      transform: scale(1.04);
+    }
+    .ikuti-kami-btn-wrap {
+      text-align: center;
+    }
+    #loadMoreBtn {
+      background: #000;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 9999px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      margin-bottom: 2rem;
+    }
+    #loadMoreBtn:hover {
+      background: #fff;
+      color: #111;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .gallery-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 700px) {
+      .gallery-row {
+        grid-template-columns: 1fr;
+      }
+      .gallery-img {
+        width: 90vw;
+        max-width: 270px;
+        height: auto;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #f3f4f6;
+      color: #4b5563;
+      padding: 2rem 1.5rem;
+      margin-top: auto;
+      font-size: 0.95rem;
+    }
+    .footer-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    }
+    .footer-left {
+      flex: 1;
+      min-width: 260px;
+    }
+    .footer-left h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #111827;
+    }
+    .footer-left p,
+    .footer-left address {
+      margin: 0.25rem 0;
+      color: #4b5563;
+    }
+    .footer-left a {
+      color: #4b5563;
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+    .footer-left a:hover {
+      color: #ff8933;
+    }
+    .footer-left address {
+      font-style: normal;
+      margin-top: 1rem;
+      line-height: 1.4;
+      font-size: 0.95rem;
+    }
+    .social-icons {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      font-size: 1.25rem;
+      color: #4b5563;
+    }
+    .social-icons a:hover {
+      color: #ff8933;
+    }
+    .footer-right {
+      flex: 1;
+      min-width: 200px;
+      margin-top: 1rem;
+      color: #6b7280;
+    }
+    @media (min-width: 768px) {
+      .footer-right {
+        margin-top: 0;
+      }
+    }
+    .footer-right nav a {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-right nav a:hover {
+      color: #ff8933;
+    }
+    .footer-right p {
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tentang Kami Section -->
+  <section class="about-section">
+    <div class="about-left">
+      <div class="about-title">Tentang Kami</div>
+      <div class="about-subtitle">Visi dan Misi</div>
+    </div>
+    <div class="about-right">
+      <p class="about-desc">
+        Costom_ID adalah tempat terbaik untuk mendapatkan sablon baju berkualitas tinggi. Kami berkomitmen untuk menyediakan layanan terbaik kepada semua pelanggan dengan fokus utama pada kepuasan dan kualitas produk.
+      </p>
+      <a href="visi misi.html" class="about-btn">Pelajari Lebih Lanjut</a>
+    </div>
+  </section>
+
+  <!-- Ikuti Kami Section -->
+  <section class="ikuti-kami-section" aria-label="Galeri kerja sama">
+    <div class="ikuti-kami-title">Yang Telah Bekerja sama bersama kami</div>
+    <div id="gallery" class="gallery-row" aria-live="polite" aria-relevant="additions">
+      <img class="gallery-img" src="bank-syariah-indonesia-logo-png_seeklogo-400985.png" alt="Koleksi 1" />
+      <img class="gallery-img" src="WhatsApp Image 2025-06-29 at 19.15.30_17d52090.jpg" alt="Koleksi 2" />
+      <img class="gallery-img" src="WhatsApp Image 2025-06-29 at 18.25.34_5275c4ae.jpg" alt="Koleksi 3" />
+      <img class="gallery-img" src="WhatsApp Image 2025-06-29 at 18.25.34_410778a6.jpg" alt="Koleksi 4" />
+    </div>
+    <div class="ikuti-kami-btn-wrap">
+      <button id="loadMoreBtn">Muatkan Lainnya</button>
+    </div>
+  </section>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+    const moreImages = [
+      "spies-hecker-logo-png_seeklogo-130428.png",
+      "UI (Universitas Indonesia) Logo - (Koleksilogo.com) (1).png",
+      "WhatsApp Image 2025-06-29 at 18.25.33_2f2283b7.jpg",
+      "WhatsApp Image 2025-06-29 at 18.25.34_dda40e93.jpg",
+      "WhatsApp Image 2025-06-29 at 19.15.30_4f8a0cfb.jpg",
+      "KPU-logo-2.png",
+      "WhatsApp Image 2025-06-29 at 18.25.33_ce61fd23.jpg",
+      "Logo-Duluin.png"
+    ];
+
+    let loadedCount = 0;
+    const loadCount = 4;
+
+    loadMoreBtn.addEventListener('click', () => {
+      const nextImages = moreImages.slice(loadedCount, loadedCount + loadCount);
+      nextImages.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = "Koleksi tambahan";
+        img.className = "gallery-img";
+        gallery.appendChild(img);
+      });
+      loadedCount += loadCount;
+      if (loadedCount >= moreImages.length) {
+        loadMoreBtn.style.display = 'none';
+      }
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <h4>Costom_ID</h4>
+        <p>0896-8791-2869</p>
+        <p><a href="mailto:costomsablon@gmail.com">costomsablon@gmail.com</a></p>
+        <address>
+          Jl. Pesona Gintung,<br />
+          Kel. Cempakaputih, Kec. Ciputat Timur, Kota<br />
+          <a href="https://www.google.com/maps/search/pesona+gintung+residence+blok+D+no+10/@-6.298558,106.7564082,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDYyMy4yIKXMDSoASAFQAw%3D%3D">Tangerang Selatan</a>, Banten, 15412, Indonesia
+        </address>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/Handikawediansyah12" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/costom_sablon?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://api.whatsapp.com/send?phone=6289687912869" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <nav aria-label="Footer Navigation">
+          <a href="kebijakan.html">Kebijakan Privasi</a>
+          <a href="kebijakan.html">Pernyataan Aksesibilitas</a>
+          <a href="kebijakan.html">Kebijakan Pengiriman</a>
+          <a href="kebijakan.html">Syarat & Ketentuan</a>
+          <a href="kebijakan.html">Kebijakan Pengembalian Dana</a>
+        </nav>
+        <p>&copy; 2025 by Costom_ID. Powered and secured by Syahrizalsaputra</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

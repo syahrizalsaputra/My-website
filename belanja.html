@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pilihan Terbaik - Costom_ID</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome CDN for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <style>
+    /* Font & Reset */
+    body {
+      margin: 0;
+      background-color: #ff8933;
+      color: #000000; /* gray-900 */
+      font-family: 'Montserrat', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #ff8933;
+    }
+
+    /* Container */
+    .section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      flex-shrink: 0;
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    /* Grid Produk */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 640px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Card Produk */
+    .card {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .card:hover {
+      box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+      transform: translateY(-4px);
+    }
+    .card img {
+      width: 100%;
+      height: 10rem; /* 40 x 4 = 160px */
+      object-fit: cover;
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+    .card p {
+      color: #000000; /* gray-700 */
+      font-weight: 600;
+      text-align: center;
+      margin: 0;
+    }
+
+    /* Running Text Seamless */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .running-text-wrapper {
+      width: 100%;
+      overflow: hidden;
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      background-color: #ff8933;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .running-text {
+      display: flex;
+      width: max-content;
+      min-width: 100%;
+      animation: marquee 18s linear infinite;
+      font-size: 1.25rem;
+      font-weight: 600;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .running-text > div {
+      display: inline-block;
+      padding-right: 2.5rem;
+    }
+    .running-text span.dot {
+      margin: 0 1rem;
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+
+    /* Special Offer */
+    .special-offer {
+      text-align: center;
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+      flex-shrink: 0;
+    }
+    .special-offer h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      white-space: pre-line;
+    }
+    .special-offer p {
+      color: #000000; /* gray-800 */
+      font-size: 1rem;
+      max-width: 36rem;
+      margin: 0 auto 2rem;
+      line-height: 1.5;
+    }
+    .special-offer a.button {
+      background-color: black;
+      color: white;
+      font-size: 1.125rem;
+      font-weight: 600;
+      padding: 0.75rem 2.5rem;
+      border-radius: 9999px;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      text-decoration: none;
+    }
+    .special-offer a.button:hover {
+      background-color: #ffffff;
+      flex-shrink: 0;
+      color: black;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #f3f4f6; /* gray-100 */
+      color: #4b5563; /* gray-700 */
+      padding: 2rem 1.5rem;
+      margin-top: auto;
+      flex-shrink: 0;
+    }
+    .footer-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    }
+    .footer-left {
+      flex: 1;
+      min-width: 260px;
+    }
+    .footer-left h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #111827; /* gray-900 */
+    }
+    .footer-left p,
+    .footer-left address {
+      margin: 0.25rem 0;
+      font-size: 0.875rem;
+      color: #4b5563;
+    }
+    .footer-left a {
+      color: #4b5563;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+    .footer-left a:hover {
+      color: #ff8933;
+    }
+    .footer-left address {
+      font-style: normal;
+      margin-top: 1rem;
+      line-height: 1.4;
+    }
+    .social-icons {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      font-size: 1.25rem;
+      color: #4b5563;
+    }
+    .social-icons a:hover {
+      color: #ff8933;
+    }
+
+    .footer-right {
+      flex: 1;
+      min-width: 200px;
+      font-size: 0.875rem;
+      margin-top: 1rem;
+      color: #6b7280; /* gray-500 */
+    }
+    @media (min-width: 768px) {
+      .footer-right {
+        margin-top: 0;
+      }
+    }
+    .footer-right nav a {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-right nav a:hover {
+      color: #ff8933;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Produk Section -->
+  <div class="section">
+    <div class="section-title">Pilihan Terbaik</div>
+    <div class="grid">
+      <!-- Produk 1 -->
+      <div class="card" role="group" tabindex="0" aria-label="Produk Sablon baju">
+        <img src="WhatsApp_Image_2025-06-20_at_20.53.33_3a9f6f29-removebg-preview.png" alt="Produk 1" />
+        <p>Sablon baju</p>
+      </div>
+      <!-- Produk 2 -->
+      <div class="card" role="group" tabindex="0" aria-label="Produk Bordir baju">
+        <img src="WhatsApp Image 2025-02-17 at 15.17.58_02e3f739.jpg" alt="Produk 2" />
+        <p>Bordir baju</p>
+      </div>
+      <!-- Produk 3 -->
+      <div class="card" role="group" tabindex="0" aria-label="Produk Sablon payung">
+        <img src="WhatsApp Image 2025-06-29 at 19.20.50_9a4cc4c4.jpg" alt="Produk 3" />
+        <p>Sablon payung</p>
+      </div>
+      <!-- Produk 4 -->
+      <div class="card" role="group" tabindex="0" aria-label="Produk Bikin Benner">
+        <img src="WhatsApp Image 2025-06-29 at 19.20.49_9f3872cf.jpg" alt="Produk 4" />
+        <p>Bikin Benner</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Running Text Seamless -->
+  <div class="running-text-wrapper" aria-label="Running promotional text">
+    <div class="running-text" aria-hidden="true">
+      <div>
+        Jangan Lewatkan Promo
+        <span class="dot">•</span>
+        Jangan Lewatkan Promo
+        <span class="dot">•</span>
+        Jangan Lewatkan Promo
+        <span class="dot">•</span>
+        Jangan Lewatkan Promo
+        <span class="dot">•</span>
+      </div>
+      <div>
+        Jangan Lewatkan Promo
+        <span class="dot">•</span>
+        Jangan Lewatkan Promo
+        <span class="dot">•</span>
+        Jangan Lewatkan Promo
+        <span class="dot">•</span>
+        Jangan Lewatkan Promo
+        <span class="dot">•</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Special Offer -->
+  <div class="special-offer" role="region" aria-labelledby="special-offer-title">
+    <h2 id="special-offer-title">Penawaran<br>Spesial Hari Ini</h2>
+    <p>
+      Dapatkan diskon menarik untuk berbagai produk sablon baju pilihan. Segera dapatkan penawaran terbaik hanya di Costom_ID.
+    </p>
+    <a href="https://www.google.com/search?rlz=1C1UEAD_enID1040ID1040&sca_esv=b0a6a50bf49897c6&cs=0&output=search&kgmid=/g/11np260m77&q=Sablon+Satuan+costom_id&shndl=30&shem=lcuae,uaasie&source=sh/x/loc/uni/m1/1&kgs=5ad0f2a5365c7fa3" target="_blank" rel="noopener" class="button" role="button" aria-label="Beli Sekarang di Tokopedia">Beli Sekarang</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <h4>Costom_ID</h4>
+        <p>0896-8791-2869</p>
+        <p><a href="mailto:costomsablon@gmail.com">costomsablon@gmail.com</a></p>
+        <address>
+          Jl. Pesona Gintung,<br />
+          Kel. Cempakaputih, Kec. Ciputat Timur, Kota<br />
+          <a href="https://www.google.com/maps/search/pesona+gintung+residence+blok+D+no+10/@-6.298558,106.7564082,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDYyMy4yIKXMDSoASAFQAw%3D%3D">Tangerang Selatan</a>, Banten, 15412, Indonesia
+        </address>
+        <div class="social-icons" role="list">
+          <a href="https://www.facebook.com/Handikawediansyah12" aria-label="Facebook" role="listitem"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter" role="listitem"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/costom_sablon?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" role="listitem"><i class="fab fa-instagram"></i></a>
+          <a href="https://api.whatsapp.com/send?phone=6289687912869" aria-label="WhatsApp" role="listitem"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <nav aria-label="Footer Navigation">
+          <a href="kebijakan.html">Kebijakan Privasi</a>
+          <a href="kebijakan.html">Pernyataan Aksesibilitas</a>
+          <a href="kebijakan.html">Kebijakan Pengiriman</a>
+          <a href="kebijakan.html">Syarat & Ketentuan</a>
+          <a href="kebijakan.html">Kebijakan Pengembalian Dana</a>
+        </nav>
+        <p>&copy; 2025 by Costom_ID. Powered and secured by Syahrizalsaputra</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

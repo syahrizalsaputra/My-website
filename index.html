@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Costom_ID - Pilihan Sablon Baju Terbaik</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+    /* Reset dan dasar */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: white;
+      color: #1a202c; /* gray-900 */
+      font-family: 'Montserrat', 'Roboto', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Welcome Banner */
+    #welcomeBanner {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      background-color: #f97316; /* orange-400 */
+      color: white;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1rem;
+      user-select: none;
+    }
+    #welcomeBanner button {
+      background-color: #ea580c; /* orange-600 */
+      border: none;
+      border-radius: 0.375rem;
+      padding: 0.25rem 0.75rem;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+    #welcomeBanner button:hover {
+      background-color: #c2410c; /* orange-700 */
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #e5e7eb; /* gray-200 */
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    nav .left-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    nav .left-group img {
+      width: 40px;
+      height: auto;
+      display: block;
+    }
+    nav .left-group .close-icon {
+      color: white;
+      font-family: monospace;
+      font-size: 1.25rem;
+      user-select: none;
+    }
+    nav .left-group span {
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: 0.05em;
+    }
+    nav .center-text {
+      color: #4b5563; /* gray-600 */
+      font-size: 1rem;
+    }
+    nav a.shopping-cart {
+      font-size: 1.875rem; /* text-3xl */
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1120px;
+      margin: 2.5rem auto 0;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      min-height: 70vh;
+      align-items: center;
+    }
+    @media (min-width: 1024px) {
+      main {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+    }
+
+    /* Left Text Section */
+    main section.flex-1:first-child {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+    @media (min-width: 1024px) {
+      main section.flex-1:first-child {
+        text-align: left;
+      }
+    }
+    main h1 {
+      font-weight: 800;
+      font-size: 3rem;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+      white-space: pre-line; /* agar <br> terlihat */
+    }
+    main h3 {
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: #4b5563; /* gray-700 */
+    }
+    main p {
+      max-width: 400px;
+      color: #6b7280; /* gray-600 */
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    #jelajahiBtn {
+      background: linear-gradient(to right, #111827, #f97316); /* from-gray-900 to-orange-500 */
+      color: white;
+      border: none;
+      border-radius: 9999px; /* rounded-full */
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 9rem;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+    @media (min-width: 1024px) {
+      #jelajahiBtn {
+        margin: 0;
+      }
+    }
+    #jelajahiBtn:hover {
+      background: linear-gradient(to right, #f97316, #111827); /* hover:from-orange-500 hover:to-gray-900 */
+    }
+
+    /* Right Image Section */
+    main section.flex-1:last-child {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+    main img#customImg {
+      border-radius: 1rem; /* rounded-xl */
+      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+      max-width: 100%;
+      width: 420px;
+      object-fit: cover;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    main img#customImg.img-hovered {
+      transform: scale(1.07);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Welcome Message -->
+  <div id="welcomeBanner">
+    <span>Selamat datang di Costom_ID! Temukan sablon baju terbaik di sini.</span>
+    <button onclick="document.getElementById('welcomeBanner').style.display='none'">Tutup</button>
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="left-group">
+      <img src="WhatsApp Image 2025-06-11 at 06.10.48_cee4d8d9.jpg" alt="Gambar kecil" />
+      <div class="close-icon">✕</div>
+      <span>Costom_ID</span>
+    </div>
+    <div class="center-text">Welcome</div>
+    <a href="belanja.html" aria-label="Shopping Cart" class="shopping-cart">🛒</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Left Text -->
+    <section class="flex-1">
+      <h1>Selamat<br />Datang di<br />Costom_ID</h1>
+      <h3>Tempat Sablon Baju Terbaik</h3>
+      <p>
+        Kami menyediakan layanan sablon baju berkualitas dengan harga terjangkau. Temukan berbagai pilihan desain yang menarik untuk kebutuhan Anda.
+      </p>
+      <button id="jelajahiBtn">Jelajahi</button>
+    </section>
+
+    <!-- Right Image -->
+    <section class="flex-1">
+      <img
+        id="customImg"
+        src="WhatsApp Image 2025-06-20 at 20.53.33_3a9f6f29.jpg"
+        alt="Sablon Baju Custom"
+      />
+    </section>
+  </main>
+
+  <!-- JavaScript Interaktif -->
+  <script>
+    // Tampilkan welcome banner setelah halaman dimuat
+    window.onload = function() {
+      document.getElementById('welcomeBanner').style.display = 'flex';
+    };
+
+    // Tombol Jelajahi: alert dulu, lalu redirect
+    document.getElementById('jelajahiBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('Terima kasih sudah mengunjungi Costom_ID! Yuk, jelajahi tentang kami.');
+      window.location.href = "tentang-kami.html";
+    });
+
+    // Efek hover pada gambar via JS
+    const img = document.getElementById('customImg');
+    img.addEventListener('mouseenter', function() {
+      img.classList.add('img-hovered');
+    });
+    img.addEventListener('mouseleave', function() {
+      img.classList.remove('img-hovered');
+    });
+  </script>
+
+</body>
+</html>
